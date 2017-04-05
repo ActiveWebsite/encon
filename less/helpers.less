@@ -1,0 +1,338 @@
+// SITE VARIABLES
+// --------------------------------------------------
+@dark-blue:			#312a62;
+@light-blue:		#b2cdfa;
+@blue:				#0059ee;
+@purple:			#5b4b9c;
+@pink:				#a93e97;
+@red:				#a53250;
+@orange:			#d54544;
+
+
+// HELPERS
+// --------------------------------------------------
+.clearfix {
+	*zoom: 1;
+	&:before,
+	&:after {
+		display: table;
+		line-height: 0;
+		content: "";
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, address, ul, ol {
+    margin: 0;
+}
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    display: block;
+}
+
+// colors
+.dark-blue {
+	color: @dark-blue;
+}
+.light-blue {
+	color: @light-blue;
+}
+.blue {
+	color: @blue;
+}
+.purple {
+	color: @purple;
+}
+.pink {
+	color: @pink;
+}
+.red {
+	color: @red;
+}
+.orange {
+	color: @orange;
+}
+
+// Transform Mixin
+.transform(@t){
+	-webkit-transform: @t;
+	-moz-transform: @t;
+	-o-transform: @t;
+	transform: @t;		
+}
+
+// Multiple Transitions Mixin (works with just one or more than one)
+.transition(@value1,@value2:X,...) {
+    @value: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
+
+    -webkit-transition: @value;
+    -moz-transition: @value;
+    -ms-transition: @value;
+    -o-transition: @value;
+    transition: @value;
+}
+
+// make all images responsive
+img {
+	display: inline-block;
+	max-width: 100%;
+	height: auto;
+}
+
+// make ul rows not have list style and padding/margin
+ul.row {
+	list-style: none;
+	padding: 0;
+	margin-bottom: 0;
+}
+
+// Hide from screenreaders and browsers
+.hidden {
+	display: none;
+	visibility: hidden;
+}
+
+// just hide from view but still render
+.invisible {
+	visibility: hidden;
+}
+
+// hide things with a hidden attribute
+*[hidden] {
+    display: none !important;
+}
+
+// Sized left float
+@media screen and (max-width: @screen-xs-max) {
+	.xs-only-pull-left{
+		float: left!important;
+	}
+}
+@media screen and (min-width: @screen-sm-min) {
+	.sm-pull-left{
+		float: left!important;
+	}
+}
+@media screen and (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+	.sm-only-pull-left{
+		float: left!important;
+	}
+}
+@media screen and (min-width: @screen-md-min) {
+	.md-pull-left{
+		float: left!important;
+	}
+}
+@media screen and (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+	.md-only-pull-left{
+		float: left!important;
+	}
+}
+@media screen and (min-width: @screen-lg-min) {
+	.lg-pull-left{
+		float: left!important;
+	}
+}
+
+// Sized right float
+@media screen and (max-width: @screen-xs-max) {
+	.xs-pull-right{
+		float: right!important;
+	}
+}
+@media screen and (min-width: @screen-sm-min) {
+	.sm-pull-right{
+		float: right!important;
+	}
+}
+@media screen and (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+	.sm-only-pull-right{
+		float: right!important;
+	}
+}
+@media screen and (min-width: @screen-md-min) {
+	.md-pull-right{
+		float: right!important;
+	}
+}
+@media screen and (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+	.md-only-pull-right{
+		float: right!important;
+	}
+}
+@media screen and (min-width: @screen-lg-min) {
+	.lg-pull-right{
+		float: right!important;
+	}
+}
+
+// clear the first in row for any block that has the class "multi-columns-row"
+.multi-columns-row .col-xs-6:nth-child(2n + 3) { clear: left; }
+.multi-columns-row .col-xs-4:nth-child(3n + 4) { clear: left; }
+.multi-columns-row .col-xs-3:nth-child(4n + 5) { clear: left; }
+.multi-columns-row .col-xs-2:nth-child(6n + 7) { clear: left; }
+.multi-columns-row .col-xs-1:nth-child(12n + 13) { clear: left; }
+@media screen and (min-width: @screen-sm-min) {
+	// reset previous grid
+	.multi-columns-row .col-xs-6:nth-child(2n + 3) { clear: none; }
+	.multi-columns-row .col-xs-4:nth-child(3n + 4) { clear: none; }
+	.multi-columns-row .col-xs-3:nth-child(4n + 5) { clear: none; }
+	.multi-columns-row .col-xs-2:nth-child(6n + 7) { clear: none; }
+	.multi-columns-row .col-xs-1:nth-child(12n + 13) { clear: none; }
+
+	// clear first in row for small columns
+	.multi-columns-row .col-sm-6:nth-child(2n + 3) { clear: left; }
+	.multi-columns-row .col-sm-4:nth-child(3n + 4) { clear: left; }
+	.multi-columns-row .col-sm-3:nth-child(4n + 5) { clear: left; }
+	.multi-columns-row .col-sm-2:nth-child(6n + 7) { clear: left; }
+	.multi-columns-row .col-sm-1:nth-child(12n + 13) { clear: left; }
+}
+@media screen and (min-width: @screen-md-min) {
+	// reset previous grid
+	.multi-columns-row .col-sm-6:nth-child(2n + 3) { clear: none; }
+	.multi-columns-row .col-sm-4:nth-child(3n + 4) { clear: none; }
+	.multi-columns-row .col-sm-3:nth-child(4n + 5) { clear: none; }
+	.multi-columns-row .col-sm-2:nth-child(6n + 7) { clear: none; }
+	.multi-columns-row .col-sm-1:nth-child(12n + 13) { clear: none; }
+
+	// clear first in row for medium columns
+	.multi-columns-row .col-md-6:nth-child(2n + 3) { clear: left; }
+	.multi-columns-row .col-md-4:nth-child(3n + 4) { clear: left; }
+	.multi-columns-row .col-md-3:nth-child(4n + 5) { clear: left; }
+	.multi-columns-row .col-md-2:nth-child(6n + 7) { clear: left; }
+	.multi-columns-row .col-md-1:nth-child(12n + 13) { clear: left; }
+}
+@media screen and (min-width: @screen-lg-min) {
+	// reset previous grid
+	.multi-columns-row .col-md-6:nth-child(2n + 3) { clear: none; }
+	.multi-columns-row .col-md-4:nth-child(3n + 4) { clear: none; }
+	.multi-columns-row .col-md-3:nth-child(4n + 5) { clear: none; }
+	.multi-columns-row .col-md-2:nth-child(6n + 7) { clear: none; }
+	.multi-columns-row .col-md-1:nth-child(12n + 13) { clear: none; }
+
+	// clear first in row for large columns
+	.multi-columns-row .col-lg-6:nth-child(2n + 3) { clear: left; }
+	.multi-columns-row .col-lg-4:nth-child(3n + 4) { clear: left; }
+	.multi-columns-row .col-lg-3:nth-child(4n + 5) { clear: left; }
+	.multi-columns-row .col-lg-2:nth-child(6n + 7) { clear: left; }
+	.multi-columns-row .col-lg-1:nth-child(12n + 13) { clear: left; }
+}
+
+.relative {
+	position: relative;
+}
+
+// Margin Shim Generator
+.generate-margin-shims(@args) {
+	.set(@var, @prefix:~'') {
+		.@{prefix}margin-@{var} { margin: @var*1px !important; }
+		.@{prefix}margin-top-@{var} { margin-top: @var*1px !important; }
+		.@{prefix}margin-right-@{var} { margin-right: @var*1px !important; }
+		.@{prefix}margin-bottom-@{var} { margin-bottom: @var*1px !important; }
+		.@{prefix}margin-left-@{var} { margin-left: @var*1px !important; }
+	}
+	.loop(@args, @prefix:~'', @i: 1) when (@i <= length(@args)) {
+		@var: extract(@args, @i);
+		.set(@var, @prefix);
+		.loop(@args, @prefix, (@i + 1));
+	}
+	.loop(@args); // mobile first
+	.xs-device({ .loop(@args, xs-); }); // then x-small devices
+	.sm-device({ .loop(@args, sm-); }); // etc...
+	.md-device({ .loop(@args, md-); });
+	.lg-device({ .loop(@args, lg-); });
+}
+.generate-margin-shims(0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100;);
+
+// media query helpers!
+.xs-device(@rules) {
+	@media screen and (max-width: @screen-xs-max) { @rules(); }
+}
+.sm-device(@rules) {
+	@media screen and (min-width: @screen-sm-min) { @rules(); }
+}
+.md-device(@rules) {
+	@media screen and (min-width: @screen-md-min) { @rules(); }
+}
+.lg-device(@rules) {
+	@media screen and (min-width: @screen-lg-min) { @rules(); }
+}
+
+// Center align text
+.center, .text-center, td.text-center {
+	text-align: center;
+}
+.xs-only-text-center {
+	@media screen and (max-width: @screen-xs-max) {
+		text-align: center;
+	}
+}
+.sm-text-center {
+	@media screen and (min-width: @screen-sm-min) {
+		text-align: center;
+	}
+}
+.sm-only-text-center {
+	@media screen and (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+		text-align: center;
+	}
+}
+.md-text-center {
+	@media screen and (min-width: @screen-md-min) {
+		text-align: center;
+	}
+}
+.md-only-text-center {
+	@media screen and (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+		text-align: center;
+	}
+}
+.lg-text-center {
+	@media screen and (min-width: @screen-lg-min) {
+		text-align: center;
+	}
+}
+
+.gradient (@startColor: #eee, @endColor: white) {
+	background-color: @startColor;
+	background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+	background: -webkit-linear-gradient(top, @startColor, @endColor);
+	background: -moz-linear-gradient(top, @startColor, @endColor);
+	background: -ms-linear-gradient(top, @startColor, @endColor);
+	background: -o-linear-gradient(top, @startColor, @endColor);
+}
+
+.box-shadow (@string) {
+	-webkit-box-shadow: @string;
+	-moz-box-shadow:    @string;
+	box-shadow:         @string;
+}
+
+// Block utilities
+.block {
+	display: block;
+}
+.inline-block {
+	display: inline-block;
+}
+.inline {
+	display: inline;
+}
+
+// Emphasis
+.italic {
+  font-style: italic;
+}
+.bold {
+  font-weight: bold;
+}
+.upper {
+  text-transform: uppercase;
+}
+.lower {
+  text-transform: lowercase;
+}
+.caps {
+  text-transform: capitalize;
+}
